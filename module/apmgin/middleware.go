@@ -110,7 +110,7 @@ func (m *middleware) handle(c *gin.Context) {
 }
 
 func (m *middleware) getRequestName(c *gin.Context) string {
-	if fullPath := c.FullPath(); fullPath != "" {
+	if fullPath := c.Request.URL; fullPath != "" {
 		return c.Request.Method + " " + fullPath
 	}
 	return apmhttp.UnknownRouteRequestName(c.Request)
